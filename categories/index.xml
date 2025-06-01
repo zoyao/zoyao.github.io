@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Categories on zoyao的旅行日记</title>
+        <title>Categories on zoyao’s Travel Diary</title>
         <link>https://zoyao.github.io/categories/</link>
-        <description>Recent content in Categories on zoyao的旅行日记</description>
+        <description>Recent content in Categories on zoyao’s Travel Diary</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zoyao.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Test</title>
-        <link>https://zoyao.github.io/categories/test/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
-        
-        <guid>https://zoyao.github.io/categories/test/</guid>
-        <description>&lt;img src="https://zoyao.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
-        </item>
-        <item>
-        <title>测试</title>
-        <link>https://zoyao.github.io/categories/%E6%B5%8B%E8%AF%95/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
-        
-        <guid>https://zoyao.github.io/categories/%E6%B5%8B%E8%AF%95/</guid>
-        <description></description>
-        </item>
-        <item>
+        <language>en</language>
+        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zoyao.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Syntax</title>
         <link>https://zoyao.github.io/categories/syntax/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
@@ -39,12 +23,12 @@
         <description></description>
         </item>
         <item>
-        <title>Test With Whitespaces</title>
-        <link>https://zoyao.github.io/categories/test-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Test</title>
+        <link>https://zoyao.github.io/categories/test/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://zoyao.github.io/categories/test-with-whitespaces/</guid>
-        <description></description>
+        <guid>https://zoyao.github.io/categories/test/</guid>
+        <description>&lt;img src="https://zoyao.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
         </item>
         
     </channel>

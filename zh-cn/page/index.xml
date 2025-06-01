@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on zoyao的旅行日记</title>
+        <link>https://zoyao.github.io/zh-cn/page/</link>
+        <description>Recent content in Pages on zoyao的旅行日记</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language><atom:link href="https://zoyao.github.io/zh-cn/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Links</title>
+        <link>https://zoyao.github.io/zh-cn/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zoyao.github.io/zh-cn/links/</guid>
+        <description>&lt;p&gt;建设中&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://zoyao.github.io/zh-cn/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zoyao.github.io/zh-cn/search/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>关于</title>
+        <link>https://zoyao.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zoyao.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</guid>
+        <description>&lt;p&gt;个人简介，测试&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
