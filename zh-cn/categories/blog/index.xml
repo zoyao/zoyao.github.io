@@ -14,11 +14,11 @@
         <guid>https://zoyao.github.io/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/</guid>
         <description>&lt;img src="https://zoyao.github.io/hugo-logo-wide.svg" alt="Featured image of post Hugo 博客 Github Page /私有化 部署指南" /&gt;&lt;p&gt;Hugo 是一个用 Go 编写的开源静态网站生成器，一般只需几秒钟就能生成一个网站，被称为“世界上最快的网站构建框架”。用户可以使用 markdown 语法编写博客内容，结合 Github Page 可以无需服务器部署自己的博客，同时也支持采用 Nginx 、Apache 等 HTTP 服务器的私有化部署方式。本文结合本博客的部署过程，详细叙述以上两种部署方式，以及 CI/CD 自动化部署、国际化配置等过程。&lt;/p&gt;
 &lt;p&gt;英文站点 - Github Page 访问地址:&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zoyao.top/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;zoyao.top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zoyao.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;zoyao.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;中文站点 - Nginx 私有化部署访问地址:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zoyao.top/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;zoyao.github.io&lt;/a&gt;&lt;/p&gt;
+    &gt;zoyao.top&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hugo-安装&#34;&gt;Hugo 安装
 &lt;/h2&gt;&lt;p&gt;hugo 本地安装，建议首次使用时在本地安装好 hugo 客户端，方便调试。后续使用过程中，可脱离 hugo 客户端使用，在本地编辑好 markdown 文件上传至 github，即可触发自动化部署，详见Github Page 自动化部署与私有化自动化部署章节&lt;/p&gt;
 &lt;ul&gt;
@@ -58,7 +58,7 @@
 &lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;预览&lt;/p&gt;
-&lt;p&gt;执行成果，可以在本地 1313 端口下，预览网站&lt;/p&gt;
+&lt;p&gt;执行成功，可以在本地 1313 端口下，预览网站&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
