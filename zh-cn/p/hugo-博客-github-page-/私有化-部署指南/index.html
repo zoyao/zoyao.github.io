@@ -251,7 +251,7 @@
   <ol>
     <li><a href="#hugo-安装">Hugo 安装</a></li>
     <li><a href="#主题配置">主题配置</a></li>
-    <li><a href="#github-page-自动化部署-cicd">Github Page 自动化部署 CI/CD</a></li>
+    <li><a href="#github-pages-自动化部署-cicd">Github Pages 自动化部署 CI/CD</a></li>
     <li><a href="#私有化自动化部署-cicd">私有化自动化部署 CI/CD</a>
       <ol>
         <li><a href="#https-配置">HTTPS 配置</a></li>
@@ -338,7 +338,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -361,7 +361,7 @@
 <p><a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
     >zoyao.top</a></p>
 <h2 id="hugo-安装">Hugo 安装
-</h2><p>hugo 本地安装，建议首次使用时在本地安装好 hugo 客户端，方便调试。后续使用过程中，可脱离 hugo 客户端使用，在本地编辑好 markdown 文件上传至 github，即可触发自动化部署，详见Github Page 自动化部署与私有化自动化部署章节</p>
+</h2><p>hugo 本地安装，建议首次使用时在本地安装好 hugo 客户端，方便调试。后续使用过程中，可脱离 hugo 客户端使用，在本地编辑好 markdown 文件上传至 github，即可触发自动化部署，详见 Github Pages 自动化部署与私有化自动化部署章节</p>
 <ul>
 <li>
 <p>hugo 安装</p>
@@ -541,9 +541,311 @@
     >官网查询</a></p>
 </li>
 </ul>
-<h2 id="github-page-自动化部署-cicd">Github Page 自动化部署 CI/CD
-</h2><h2 id="私有化自动化部署-cicd">私有化自动化部署 CI/CD
-</h2><h3 id="https-配置">HTTPS 配置
+<h2 id="github-pages-自动化部署-cicd">Github Pages 自动化部署 CI/CD
+</h2><p>GitHub Pages 是 GitHub 提供的一个网页寄存服务，可以用于存放静态网页，包括博客、项目文档等，hugo 可以快速构建静态网站，天然支持使用 GitHub Pages 部署</p>
+<ul>
+<li>
+<p>GitHub Pages 配置</p>
+<p>使用 Github Pages 需要创建一个以 Github 用户名开头，<code>.github.io</code> 结尾的 repository，并且必须为公开仓库。具体流程为：</p>
+<ol>
+<li>
+<p>New repository</p>
+</li>
+<li>
+<p>Repository name: xxxx(用户名).github.io</p>
+</li>
+<li>
+<p>Public</p>
+</li>
+<li>
+<p>Create repository</p>
+</li>
+</ol>
+<p>创建完成，打开仓库的 Settings 配置，修改 Default branch 可以修改默认展示的分支。</p>
+<p><img src="/image-4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="当前配置为main分支"
+	
+	
+></p>
+<p>上传静态页面 index.html 文件至仓库指定分支</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;meta charset=&#34;utf-8&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Hello World&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">    &lt;h1&gt;Hello World&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>打开 https://用户名.github.io/ 即可看到刚刚上传的静态页面。</p>
+</li>
+<li>
+<p>关联 Hugo 仓库自动化部署</p>
+<p>在这里，我们采用两个不同的 Github 仓库</p>
+<ul>
+<li>
+<p>blog 仓库 &ndash; 用来存放原始的博客文件，主要格式为 Mrakdown</p>
+</li>
+<li>
+<p>GitHub Pages 仓库 &ndash; 即上一个步骤创建的仓库，用来存放打包后的静态网站</p>
+</li>
+</ul>
+<p>具体流程如下：</p>
+<ol>
+<li>
+<p>打通两个仓库的权限</p>
+<ul>
+<li>
+<p>打开 Github 全局配置（非仓库配置）Settings / Settings / Personal access tokens / Fine-grained tokens / Generate new token</p>
+<p><img src="/image-1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+<li>
+<p>Token name 可随意填写</p>
+</li>
+<li>
+<p>Expiration 过期时间建议选择 No expiration，避免过期后无法使用</p>
+</li>
+<li>
+<p>Repository access 安全考虑建议选择 Only select repositories，只选择刚刚创建的 GitHub Pages 仓库仓库</p>
+<p><img src="/image-3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+<li>
+<p>Permissions 权限配置将 Contents 修改为 Read and write</p>
+<p><img src="/image-2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+<li>
+<p>保存并复制好自动生成的 token</p>
+</li>
+<li>
+<p>在 blog 仓库增加 token 配置，路径为：blog 仓库 / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret，Name 命名为 PERSONAL_TOKEN，并将上述步骤复制的 token 粘贴到 Secret 中保存</p>
+<p><img src="/image.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p>hugo 自动打包、发布</p>
+<p>在 blog 仓库的 <code>.github/workflows</code> 目录下，创建<code>deploy.yml</code>，配置内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">name: deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">on:
+</span></span><span class="line"><span class="cl">    # git push时执行 action
+</span></span><span class="line"><span class="cl">    push:
+</span></span><span class="line"><span class="cl">    workflow_dispatch:
+</span></span><span class="line"><span class="cl">    schedule:
+</span></span><span class="line"><span class="cl">        # Runs everyday at 8:00 AM
+</span></span><span class="line"><span class="cl">        - cron: &#34;0 0 * * *&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jobs:
+</span></span><span class="line"><span class="cl">    build:
+</span></span><span class="line"><span class="cl">        runs-on: ubuntu-latest
+</span></span><span class="line"><span class="cl">        steps:
+</span></span><span class="line"><span class="cl">            - name: Checkout
+</span></span><span class="line"><span class="cl">            uses: actions/checkout@v2
+</span></span><span class="line"><span class="cl">            with:
+</span></span><span class="line"><span class="cl">                submodules: true
+</span></span><span class="line"><span class="cl">                fetch-depth: 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            - name: Setup Hugo
+</span></span><span class="line"><span class="cl">            uses: peaceiris/actions-hugo@v2
+</span></span><span class="line"><span class="cl">            with:
+</span></span><span class="line"><span class="cl">                hugo-version: &#34;latest&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            # hugo 打包
+</span></span><span class="line"><span class="cl">            - name: Build Web
+</span></span><span class="line"><span class="cl">            run: hugo
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            # 打包完成推送至指定仓库
+</span></span><span class="line"><span class="cl">            - name: Deploy Web
+</span></span><span class="line"><span class="cl">            uses: peaceiris/actions-gh-pages@v3
+</span></span><span class="line"><span class="cl">            with:
+</span></span><span class="line"><span class="cl">                PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+</span></span><span class="line"><span class="cl">                EXTERNAL_REPOSITORY: zoyao/zoyao.github.io
+</span></span><span class="line"><span class="cl">                PUBLISH_BRANCH: master
+</span></span><span class="line"><span class="cl">                PUBLISH_DIR: ./public
+</span></span><span class="line"><span class="cl">                commit_message: ${{ github.event.head_commit.message }}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置完成之后，当执行 git push 之后，即触发自动化部署，可在 blog 仓库的 action 中，看到相关流程</p>
+<p><img src="/image-5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="私有化自动化部署-cicd">私有化自动化部署 CI/CD
+</h2><p>采用 GitHub Pages 可以很方便的完成自动化部署，但是 GitHub 域名在部分网络环境下访问较慢，如果有这部分需求的童鞋，可以采用私有化部署，部署到自己的服务器上。</p>
+<ul>
+<li>
+<p>私有化部署</p>
+<p>这里采用 Nginx 进行私有化部署</p>
+<ol>
+<li>
+<p>将打包后的博客静态文件复制到私有服务器，<code>/app/blog/</code>目录下</p>
+</li>
+<li>
+<p>配置 Nginx，在 Nginx 的 <code>./nginx/conf.d</code>目录下，新建配置文件，这里命名为<code>blog-8888.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    # 监听8888端口
+</span></span><span class="line"><span class="cl">    listen 8888;
+</span></span><span class="line"><span class="cl">    # 这里先采用IP访问，后续 HTTPS 配置再修改为域名
+</span></span><span class="line"><span class="cl">    server_name 服务器公网IP;
+</span></span><span class="line"><span class="cl">    # server_name www.zoyao.top;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    # 指定静态资源位置
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        root   /app/blog;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>更新 Nginx 配置之后，访问 http://服务器公网IP:8888/ 即可看到博客首页</p>
+</li>
+</ol>
+</li>
+<li>
+<p>自动化部署</p>
+<p>使用自动化部署，需要先配置 ssh key 登录，建议先新建用户，做好权限隔离</p>
+<ol>
+<li>
+<p>使用 <code>adduser</code> 命令创建新用户，这里命名为 git，可自定义</p>
+<p><code>sudo adduser git</code></p>
+</li>
+<li>
+<p>目录授权，需要将 <code>/app/blog</code> 授权给上一步骤新建的用户，切换到git用户执行</p>
+<p><code>sudo chmod -R 777 /app/blog</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="https-配置">HTTPS 配置
 </h3><h2 id="i18n国际化">i18n国际化
 </h2><!-- 链接定义区域 -->
 
