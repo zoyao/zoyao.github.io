@@ -338,7 +338,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 6 分钟
                 </time>
             </div>
         
@@ -842,12 +842,412 @@
 <p>目录授权，需要将 <code>/app/blog</code> 授权给上一步骤新建的用户，切换到git用户执行</p>
 <p><code>sudo chmod -R 777 /app/blog</code></p>
 </li>
+<li>
+<p>切换到 git 用户，创建 ssh key，并保存在 Github secret 中</p>
+<ul>
+<li>
+<p>切换到 git 用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">su git
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在 /home/git 目录下创建新目录 .ssh 并授权</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>执行 ssh-keygen 生成密钥对，建议使用 ed25519 比 rsa 更安全</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh-keygen -t ed25519 -C &#34;github-actions-deploy-key&#34; -f ~/.ssh/github_actions
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>复制公钥至 authorized_keys</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sh -c &#39;cat ~/.ssh/github_actions.pub &gt;&gt; ~/.ssh/authorized_keys
+</span></span><span class="line"><span class="cl">&#39;```
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>授权 authorized_keys</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod 600 ~/.ssh/authorized_keys
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查看并复制私钥内容备用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat ~/.ssh/github_actions
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>本地使用 ssh 登录验证是否成功</p>
+</li>
+<li>
+<p>在 blog 仓库增加密钥配置，路径为：blog 仓库 / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret，Name 命名为 SERVER_SSH_KEY，并将上述步骤复制的私钥粘贴到 Secret 中保存</p>
+<p><img src="/image-6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Github 配置自动化部署</p>
+<p>在 blog 仓库的 <code>.github/workflows</code> 目录下，创建<code>deploy.yml</code>，配置内容如下，服务器IP修改为自己的私有化服务器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">name: deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    on:
+</span></span><span class="line"><span class="cl">        push:
+</span></span><span class="line"><span class="cl">        workflow_dispatch:
+</span></span><span class="line"><span class="cl">        schedule:
+</span></span><span class="line"><span class="cl">            # Runs everyday at 8:00 AM
+</span></span><span class="line"><span class="cl">            - cron: &#34;0 0 * * *&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    jobs:
+</span></span><span class="line"><span class="cl">        build:
+</span></span><span class="line"><span class="cl">            runs-on: ubuntu-latest
+</span></span><span class="line"><span class="cl">            steps:
+</span></span><span class="line"><span class="cl">                - name: Checkout
+</span></span><span class="line"><span class="cl">                uses: actions/checkout@v2
+</span></span><span class="line"><span class="cl">                with:
+</span></span><span class="line"><span class="cl">                    submodules: true
+</span></span><span class="line"><span class="cl">                    fetch-depth: 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                - name: Setup Hugo
+</span></span><span class="line"><span class="cl">                uses: peaceiris/actions-hugo@v2
+</span></span><span class="line"><span class="cl">                with:
+</span></span><span class="line"><span class="cl">                    hugo-version: &#34;latest&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                - name: Build Web
+</span></span><span class="line"><span class="cl">                run: hugo
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                - name: Deploy Web Self
+</span></span><span class="line"><span class="cl">                uses: easingthemes/ssh-deploy@main
+</span></span><span class="line"><span class="cl">                with:
+</span></span><span class="line"><span class="cl">                    SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+</span></span><span class="line"><span class="cl">                    REMOTE_HOST: 服务器IP
+</span></span><span class="line"><span class="cl">                    REMOTE_USER: git
+</span></span><span class="line"><span class="cl">                    SOURCE: ./public/
+</span></span><span class="line"><span class="cl">                    TARGET: /app/blog/hugo/
+</span></span><span class="line"><span class="cl">                    ARGS: -avz --delete --chown=git:git    
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 </li>
 </ul>
 <h3 id="https-配置">HTTPS 配置
-</h3><h2 id="i18n国际化">i18n国际化
-</h2><!-- 链接定义区域 -->
+</h3><p>这里我们使用阿里云的免费 ssl 证书进行 HTTPS 配置，但是由于免费证书有效期较短，需要安装 acme 进行自动续期，自动更新</p>
+<ol>
+<li>
+<p>申请阿里云的 api</p>
+<ul>
+<li>
+<p>创建 acme 访问用户</p>
+<p>登录阿里云后台后，进入 权限与安全 / 权限与安全， 选择 身份管理 / 用户，创建新用户，勾选 使用永久 AccessKey 访问，确认后保存对应的 key 以及 secret 备用</p>
+<p><img src="/image-7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+></p>
+</li>
+<li>
+<p>配置权限</p>
+<p>点击添加权限，授予新用户以下权限：</p>
+<p>AliyunRAMFullAccess</p>
+</li>
+</ul>
+</li>
+<li>
+<p>配置 acme 自动更新</p>
+<ul>
+<li>
+<p>安装 acme</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl https://get.acme.sh | sh -s email=xxxx@xxxx.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用步骤1保存的 key 以及 secret ，配置好阿里云的系统参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="k">export</span> <span class="n">Ali_Key</span><span class="o">=</span><span class="s2">&#34;key&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="n">Ali_Secret</span><span class="o">=</span><span class="s2">&#34;Secret&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>拉取证书</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">acme.sh --issue --dns dns_ali -d zoyao.top -d &#39;*.zoyao.top&#39; --dnssleep 300 --debug
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>保存证书, 因本人使用 docker 部署的 nginx，拉取证书后，需要重启 nginx，所以增加了<code>--reloadcmd &quot;docker restart nginx&quot;</code>可根据实际需要删除或修改为自己的命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">acme</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">cert</span> <span class="o">-</span><span class="n">d</span> <span class="n">zoyao</span><span class="o">.</span><span class="n">top</span> <span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span>       <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pem</span>  <span class="o">--</span><span class="n">fullchain</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span> <span class="o">--</span><span class="n">reloadcmd</span>     <span class="s2">&#34;docker restart nginx&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>执行成功后，可在 /app/nginx/ssl/zoyao.top/ 目录下查看到证书</p>
+</li>
+</ul>
+</li>
+<li>
+<p>nginx ssl 配置</p>
+<p>在 Nginx 的 <code>./nginx/conf.d</code>目录下，新建配置文件，这里命名为<code>common.conf</code></p>
+<p>在前边的私有化部署中，我们使用了8888端口作为博客的访问端口，在这里只需要将 ssl 443 端口转发至 8888 端口，并配置上 ssl 证书地址即可，配置文件如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen 443 ssl http2;
+</span></span><span class="line"><span class="cl">    listen [::]:443 ssl http2;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    # 配置博客域名
+</span></span><span class="line"><span class="cl">    server_name www.zoyao.top zoyao.top;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    # 上一个步骤保存的 ssl 证书地址，这里因为是 docker 部署，配置了映射后的地址
+</span></span><span class="line"><span class="cl">    ssl_certificate &#34;/app/ssl/zoyao.top/cert.pem&#34;;
+</span></span><span class="line"><span class="cl">    ssl_certificate_key &#34;/app/ssl/zoyao.top/key.pem&#34;;
+</span></span><span class="line"><span class="cl">    ssl_session_cache shared:SSL:1m;
+</span></span><span class="line"><span class="cl">    ssl_session_timeout  10m;
+</span></span><span class="line"><span class="cl">    ssl_ciphers HIGH:!aNULL:!MD5;
+</span></span><span class="line"><span class="cl">    ssl_prefer_server_ciphers on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        # 请求转发至实际博客部署的端口
+</span></span><span class="line"><span class="cl">        proxy_pass  http://127.0.0.1:8888; # 转发规则
+</span></span><span class="line"><span class="cl">        proxy_set_header Host $proxy_host; # 修改转发请求头，让8080端口的应用可以受到真实的请求
+</span></span><span class="line"><span class="cl">        proxy_set_header X-Real-IP $remote_addr;
+</span></span><span class="line"><span class="cl">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，HTTPS 部署完成，打开 <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
+    >https://www.zoyao.top</a> 即可访问</p>
+</li>
+</ol>
+<h2 id="i18n国际化">i18n国际化
+</h2><p>Hugo 本身提供的完整的国际化方案，可以在 hugo.yaml 中，定义不同的语言方案</p>
+<p>在这里，我定义了中英文两种语言</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">languages:
+</span></span><span class="line"><span class="cl">    en:
+</span></span><span class="line"><span class="cl">        languageName: English
+</span></span><span class="line"><span class="cl">        title: zoyao’s Travel Diary
+</span></span><span class="line"><span class="cl">        weight: 1
+</span></span><span class="line"><span class="cl">        params:
+</span></span><span class="line"><span class="cl">            sidebar:
+</span></span><span class="line"><span class="cl">                subtitle: Let&#39;s bust our asses and meet again at the pinnacle of success.
+</span></span><span class="line"><span class="cl">    zh-cn:
+</span></span><span class="line"><span class="cl">        languageName: 中文
+</span></span><span class="line"><span class="cl">        title: zoyao的旅行日记
+</span></span><span class="line"><span class="cl">        weight: 2
+</span></span><span class="line"><span class="cl">        params:
+</span></span><span class="line"><span class="cl">            sidebar:
+</span></span><span class="line"><span class="cl">                subtitle: 顶峰相见
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>相对应的，在文章中，也需要不同的 markdown 来区分不同的语言</p>
+<p>例如，本篇文章，采用<code>index.zh-cn.md</code>为中文</p>
+<p>在相同目录下，可创建<code>index.en.md</code>为英文</p>
+<p>可以通过<code>DefaultContentLanguage</code>配置网站默认语言</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DefaultContentLanguage: zh-cn
+</span></span><span class="line"><span class="cl">languageCode: zh-cn
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>本网站针对不同的部署方式，采用了不同的默认语言，在 <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
+    >zoyao.top</a> 中默认中文，在 <a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
+    >zoyao.github.io</a> 中默认英文，只需要在根目录下的 config 文件夹中定义好相应的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysite
+</span></span><span class="line"><span class="cl">├── config.toml
+</span></span><span class="line"><span class="cl">└── config
+</span></span><span class="line"><span class="cl">    ├── development
+</span></span><span class="line"><span class="cl">    │   └── config.toml
+</span></span><span class="line"><span class="cl">    └── production
+</span></span><span class="line"><span class="cl">        └── config.toml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不同的配置文件采用不同的<code>DefaultContentLanguage</code></p>
+<p>同样的，在自动化部署时，可以指定不同的配置文件，即可完成对应语言环境的部署</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- name: Build Web
+</span></span><span class="line"><span class="cl">    run: hugo --environment production
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!-- 链接定义区域 -->
 
 </section>
 
