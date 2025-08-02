@@ -836,12 +836,26 @@
 <ol>
 <li>
 <p>使用 <code>adduser</code> 命令创建新用户，这里命名为 git，可自定义</p>
-<p><code>sudo adduser git</code></p>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo adduser git
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>目录授权，需要将 <code>/app/blog</code> 授权给上一步骤新建的用户，切换到git用户执行</p>
-<p><code>sudo chmod -R 777 /app/blog</code></p>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo chmod -R 777 /app/blog
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>切换到 git 用户，创建 ssh key，并保存在 Github secret 中</p>
 <ul>
@@ -883,11 +897,9 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sh -c &#39;cat ~/.ssh/github_actions.pub &gt;&gt; ~/.ssh/authorized_keys
-</span></span><span class="line"><span class="cl">&#39;```
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
