@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on zoyao’s Travel Diary</title>
-        <link>https://zoyao.github.io/post/</link>
-        <description>Recent content in Posts on zoyao’s Travel Diary</description>
+        <title>Posts on zoyao的旅行日记</title>
+        <link>http://localhost:1313/post/</link>
+        <description>Recent content in Posts on zoyao的旅行日记</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zoyao.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 03 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo 博客 Github Page/私有化 部署指南</title>
+        <link>http://localhost:1313/p/hugo-%E5%8D%9A%E5%AE%A2-github-page/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/hugo-%E5%8D%9A%E5%AE%A2-github-page/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="http://localhost:1313/p/hugo-%E5%8D%9A%E5%AE%A2-github-page/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/hugo-logo-wide.svg" alt="Featured image of post Hugo 博客 Github Page/私有化 部署指南" /&gt;&lt;p&gt;Hugo 是一个用 Go 编写的开源静态网站生成器，一般只需几秒钟就能生成一个网站，被称为“世界上最快的网站构建框架”。结合 Github Page 可以无需服务器部署自己的博客，同时也支持采用 Nginx 、Apache 等 HTTP 服务器的私有化部署方式。本文将结合本博客的部署过程，详细叙述以上两种部署方式，以及 CI/CD 自动化部署、国际化配置。&lt;/p&gt;
+&lt;p&gt;英文站点 - Github Page 访问地址:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zoyao.top/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;zoyao.top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;中文站点 - Nginx 私有化部署访问地址:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zoyao.top/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;zoyao.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;hugo-安装&#34;&gt;Hugo 安装
+&lt;/h2&gt;&lt;h2 id=&#34;主题配置&#34;&gt;主题配置
+&lt;/h2&gt;&lt;h2 id=&#34;github-page-自动化部署-cicd&#34;&gt;Github Page 自动化部署 CI/CD
+&lt;/h2&gt;&lt;h2 id=&#34;私有化自动化部署-cicd&#34;&gt;私有化自动化部署 CI/CD
+&lt;/h2&gt;&lt;h3 id=&#34;https-配置&#34;&gt;HTTPS 配置
+&lt;/h3&gt;&lt;h2 id=&#34;i18n国际化&#34;&gt;i18n国际化
+&lt;/h2&gt;&lt;!-- 链接定义区域 --&gt;
+</description>
+        </item>
+        <item>
         <title>Markdown Syntax Guide</title>
-        <link>https://zoyao.github.io/p/markdown-syntax-guide/</link>
+        <link>http://localhost:1313/p/markdown-syntax-guide/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://zoyao.github.io/p/markdown-syntax-guide/</guid>
-        <description>&lt;img src="https://zoyao.github.io/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
+        <guid>http://localhost:1313/p/markdown-syntax-guide/</guid>
+        <description>&lt;img src="http://localhost:1313/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
 &lt;h2 id=&#34;headings&#34;&gt;Headings
 &lt;/h2&gt;&lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
 &lt;h1 id=&#34;h1&#34;&gt;H1
@@ -29,13 +51,11 @@
 &lt;h4 id=&#34;blockquote-without-attribution&#34;&gt;Blockquote without attribution
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h4 id=&#34;blockquote-with-attribution&#34;&gt;Blockquote with attribution
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br&gt;
-— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;tables&#34;&gt;Tables
 &lt;/h2&gt;&lt;p&gt;Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p&gt;
 &lt;table&gt;
