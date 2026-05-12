@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hugo CI/CD automated deployment, internationalization configuration.">
+<title>Hugo Blog Github Pages / Private Deployment Guide</title>
+
+<link rel='canonical' href='https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/'>
+
+<link rel="stylesheet" href="/scss/style.min.cfa5b1b0e78d61c00a14173992a1f3fa3b5c1b9fa34d023de959af564e7b19dd.css"><meta property='og:title' content="Hugo Blog Github Pages / Private Deployment Guide">
+<meta property='og:description' content="Hugo CI/CD automated deployment, internationalization configuration.">
+<meta property='og:url' content='https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/'>
+<meta property='og:site_name' content='zoyao’s Travel Diary'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='hugo' /><meta property='article:tag' content='github' /><meta property='article:published_time' content='2025-06-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg' />
+<meta name="twitter:title" content="Hugo Blog Github Pages / Private Deployment Guide">
+<meta name="twitter:description" content="Hugo CI/CD automated deployment, internationalization configuration."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_73fa77c7947e4ad5.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">zoyao’s Travel Diary</a></h1>
+            <h2 class="site-description">Let&#39;s bust our asses and meet again at the pinnacle of success.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/zoyao'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://zoyao.github.io/" selected>English</option>
+                                
+                                    <option value="https://zoyao.github.io/zh-cn/" >中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hugo-installation">Hugo Installation</a></li>
+    <li><a href="#theme-configuration">Theme Configuration</a>
+      <ol>
+        <li><a href="#https-configuration">HTTPS Configuration</a></li>
+      </ol>
+    </li>
+    <li><a href="#i18n-internationalization">i18n Internationalization</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/hugo-blog-github-pages-/-private-deployment-guide/">
+                
+                    <img src="/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg" loading="lazy" alt="Featured image of post Hugo Blog Github Pages / Private Deployment Guide" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/hugo/" >
+                Hugo
+            </a>
+        
+            <a href="/categories/blog/" >
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/hugo-blog-github-pages-/-private-deployment-guide/">Hugo Blog Github Pages / Private Deployment Guide</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Hugo CI/CD automated deployment, internationalization configuration.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://zoyao.github.io/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" class="link">中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Hugo is an open-source static site generator written in Go. It typically takes only a few seconds to generate a website and is known as the &ldquo;world&rsquo;s fastest framework for building websites.&rdquo; Users can write blog content using Markdown syntax. Combined with GitHub Pages, you can deploy your own blog without needing a server. It also supports private deployment methods using HTTP servers like Nginx and Apache. This article, based on the deployment process of this blog, details the above two deployment methods, as well as CI/CD automated deployment and internationalization (i18n) configuration.</p>
+<p>English site - Github Pages access URL:</p>
+<p><a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
+    >zoyao.github.io</a></p>
+<p>Chinese site - Nginx private deployment access URL:</p>
+<p><a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
+    >zoyao.top</a></p>
+<h2 id="hugo-installation">Hugo Installation
+</h2><p>Local Hugo installation: It is recommended to install the Hugo client locally when using it for the first time to facilitate debugging. During subsequent use, you can operate without the local Hugo client; simply editing Markdown files locally and uploading them to GitHub will trigger automated deployment. For details, see the GitHub Pages Automated Deployment and Private Automated Deployment sections.</p>
+<ul>
+<li>
+<p>Hugo Installation</p>
+<p>Installation process - taking Windows winget as an example, installing the Extended version:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// Install
+</span></span><span class="line"><span class="cl">winget install Hugo.Hugo.Extended
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// Uninstall
+</span></span><span class="line"><span class="cl">winget uninstall --name <span class="s2">&#34;Hugo (Extended)&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">For</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">operating</span><span class="w"> </span><span class="n">systems</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="n">methods</span><span class="p">,</span><span class="w"> </span><span class="n">please</span><span class="w"> </span><span class="n">refer</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">[</span><span class="n">official</span><span class="w"> </span><span class="n">documentation</span><span class="p">][</span><span class="n">hugo</span><span class="o">-</span><span class="n">installation</span><span class="p">].</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">-</span><span class="w"> </span><span class="k">Create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="n">Site</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Execute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="o">`</span><span class="n">mysite</span><span class="o">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">folder</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">```</span><span class="n">bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">hugo</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">mysite</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>Preview</p>
+<p>If executed successfully, you can preview the website locally on port 1313:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">-</span><span class="w"> </span><span class="n">Build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Once</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">complete</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">static</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">generated</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">`</span><span class="n">public</span><span class="o">`</span><span class="w"> </span><span class="n">directory</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">```</span><span class="n">bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>Environment Configuration</p>
+<p>Hugo manages environment configuration files under the <code>config</code> folder (this directory does not exist by default and needs to be created by the user). The directory structure is as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysite
+</span></span><span class="line"><span class="cl">├── config.toml
+</span></span><span class="line"><span class="cl">└── config
+</span></span><span class="line"><span class="cl">    ├── development
+</span></span><span class="line"><span class="cl">    │   └── config.toml
+</span></span><span class="line"><span class="cl">    └── production
+</span></span><span class="line"><span class="cl">        └── config.toml
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">As</span><span class="w"> </span><span class="n">shown</span><span class="w"> </span><span class="n">above</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">development</span><span class="o">`</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="o">`</span><span class="n">production</span><span class="o">`</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="n">configurations</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">created</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">specify</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="o">`--</span><span class="n">environment</span><span class="w"> </span><span class="n">development</span><span class="o">`</span><span class="p">.</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">specified</span><span class="p">,</span><span class="w"> </span><span class="k">then</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">The</span><span class="w"> </span><span class="o">`</span><span class="n">hugo</span><span class="w"> </span><span class="n">server</span><span class="o">`</span><span class="w"> </span><span class="n">preview</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">`</span><span class="n">development</span><span class="o">`</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">default</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">The</span><span class="w"> </span><span class="o">`</span><span class="n">hugo</span><span class="o">`</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">`</span><span class="n">production</span><span class="o">`</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">default</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Startup</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="n">specifying</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">file</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">```</span><span class="n">bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Preview</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">hugo</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">--</span><span class="n">environment</span><span class="w"> </span><span class="n">development</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">Build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">hugo</span><span class="w"> </span><span class="o">--</span><span class="n">environment</span><span class="w"> </span><span class="n">development</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="theme-configuration">Theme Configuration
+</h2><p>Thanks to Hugo&rsquo;s rich theme library, we can easily and quickly obtain many personalized Hugo themes. You can browse the <a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
+    >official theme library</a> to pick a theme you like.</p>
+<p>Below, we will use the <a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack"  target="_blank" rel="noopener"
+    >hugo-theme-stack</a> theme as an example.</p>
+<ul>
+<li>
+<p>Git Initialization</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// Enter the directory
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> mysite
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// Git initialization
+</span></span><span class="line"><span class="cl">git init
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">- Add a submodule for easy theme updates later
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    ```bash
+</span></span><span class="line"><span class="cl">    // In the mysite/themes directory, pull hugo-theme-stack and create a theme named stack
+</span></span><span class="line"><span class="cl">    git submodule add [https://github.com/CaiJimmy/hugo-theme-stack.git](https://github.com/CaiJimmy/hugo-theme-stack.git) themes/stack
+</span></span><span class="line"><span class="cl">    
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>Configure the Theme</p>
+<p>Open the newly downloaded theme files, copy the configuration file from the <code>themes/stack/exampleSite</code> directory to the root directory, overwrite the original configuration file, edit the configuration file, and set the <code>theme</code> field to the theme name created in the previous step, which is <code>stack</code>.</p>
+<p>Partial configuration description for hugo-theme-stack:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">// Base URL, used during page jumps</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">baseurl</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">https://example.com/](https://example.com/)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">// Theme name, should be stack here</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">hugo-theme-stack</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">// Website title</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Example Site</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">// Website copyright info</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">copyright</span><span class="p">:</span><span class="w"> </span><span class="l">Example Person</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">After</span> <span class="n">configuring</span><span class="p">,</span> <span class="n">restart</span> <span class="n">to</span> <span class="n">see</span> <span class="n">the</span> <span class="n">theme</span> <span class="n">changes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">For</span> <span class="n">other</span> <span class="n">hugo</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">stack</span> <span class="n">configurations</span><span class="p">,</span> <span class="n">please</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">the</span> <span class="p">[</span><span class="n">official</span> <span class="n">documentation</span><span class="p">][</span><span class="n">hugo</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">stack</span><span class="o">-</span><span class="n">config</span><span class="p">]</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## GitHub Pages Automated Deployment CI/CD</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">GitHub</span> <span class="n">Pages</span> <span class="n">is</span> <span class="n">a</span> <span class="n">web</span> <span class="n">hosting</span> <span class="n">service</span> <span class="n">provided</span> <span class="n">by</span> <span class="n">GitHub</span><span class="p">,</span> <span class="n">which</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">host</span> <span class="k">static</span> <span class="n">web</span> <span class="n">pages</span><span class="p">,</span> <span class="n">including</span> <span class="n">blogs</span><span class="p">,</span> <span class="n">project</span> <span class="n">documentation</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span> <span class="n">Hugo</span> <span class="n">can</span> <span class="n">quickly</span> <span class="n">build</span> <span class="k">static</span> <span class="n">websites</span> <span class="ow">and</span> <span class="n">naturally</span> <span class="n">supports</span> <span class="n">deployment</span> <span class="n">using</span> <span class="n">GitHub</span> <span class="n">Pages</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="n">GitHub</span> <span class="n">Pages</span> <span class="n">Configuration</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">To</span> <span class="n">use</span> <span class="n">GitHub</span> <span class="n">Pages</span><span class="p">,</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">repository</span> <span class="n">that</span> <span class="n">starts</span> <span class="n">with</span> <span class="n">your</span> <span class="n">GitHub</span> <span class="n">username</span> <span class="ow">and</span> <span class="n">ends</span> <span class="n">with</span> <span class="err">`</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="err">`</span><span class="p">,</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">must</span> <span class="n">be</span> <span class="n">a</span> <span class="n">public</span> <span class="n">repository</span><span class="o">.</span> <span class="n">The</span> <span class="n">specific</span> <span class="n">process</span> <span class="n">is</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">1.</span> <span class="n">New</span> <span class="n">repository</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">2.</span> <span class="n">Repository</span> <span class="n">name</span><span class="p">:</span> <span class="n">xxxx</span><span class="p">(</span><span class="n">username</span><span class="p">)</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span>    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">3.</span> <span class="n">Public</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">4.</span> <span class="n">Create</span> <span class="n">repository</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Once</span> <span class="n">created</span><span class="p">,</span> <span class="n">open</span> <span class="n">the</span> <span class="n">repository</span><span class="s1">&#39;s Settings, and modify the Default branch to change the default displayed branch.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">!</span><span class="p">[</span><span class="n">Current</span> <span class="n">configuration</span> <span class="n">is</span> <span class="n">main</span> <span class="n">branch</span><span class="p">](</span><span class="n">image</span><span class="o">-</span><span class="mf">4.</span><span class="n">png</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Upload</span> <span class="n">a</span> <span class="k">static</span> <span class="err">`</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="err">`</span> <span class="n">file</span> <span class="n">to</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">branch</span> <span class="n">of</span> <span class="n">the</span> <span class="n">repository</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">```</span><span class="n">html</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Hello</span> <span class="ne">World</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Hello</span> <span class="ne">World</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>Open `https://username.github.io/` to see the static page you just uploaded.
+</code></pre>
+<ul>
+<li>
+<p>Linking the Hugo Repository for Automated Deployment</p>
+<p>Here, we use two different GitHub repositories:</p>
+<ul>
+<li>
+<p><code>blog</code> repository &ndash; used to store the original blog files, mainly in Markdown format.</p>
+</li>
+<li>
+<p><code>GitHub Pages</code> repository &ndash; the repository created in the previous step, used to store the built static website.</p>
+</li>
+</ul>
+<p>The specific process is as follows:</p>
+<ol>
+<li>
+<p>Connect the permissions of the two repositories</p>
+<ul>
+<li>
+<p>Open the GitHub global settings (not repository settings): Settings / Developer settings / Personal access tokens / Fine-grained tokens / Generate new token.</p>
+<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-1.png"
+	width="1230"
+	height="301"
+	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-1_hu_77b36aaacfbc9059.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-1_hu_f9eb01c5a9b08520.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="408"
+		data-flex-basis="980px"
+	
+></p>
+</li>
+<li>
+<p>Token name can be filled in as you like.</p>
+</li>
+<li>
+<p>Expiration: It is recommended to choose <code>No expiration</code> to avoid it becoming unusable after expiring.</p>
+</li>
+<li>
+<p>Repository access: For security reasons, it is recommended to choose <code>Only select repositories</code> and select only the GitHub Pages repository you just created.</p>
+<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-3.png"
+	width="562"
+	height="365"
+	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-3_hu_d37a8287b900342f.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-3_hu_d3e798ece66088be.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+></p>
+</li>
+<li>
+<p>Permissions configuration: Change <code>Contents</code> to <code>Read and write</code>.</p>
+<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-2.png"
+	width="821"
+	height="83"
+	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-2_hu_b22f8d21b1bf99de.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-2_hu_b35312794909fa85.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="989"
+		data-flex-basis="2373px"
+	
+></p>
+</li>
+<li>
+<p>Save and copy the automatically generated token.</p>
+</li>
+<li>
+<p>Add the token configuration to the <code>blog</code> repository. The path is: <code>blog</code> repository / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret. Name it <code>PERSONAL_TOKEN</code>, and paste the token copied in the previous step into the Secret and save it.</p>
+<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image.png"
+	width="1579"
+	height="791"
+	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image_hu_15d4a547825b9e72.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image_hu_ff3df738f1c0f9.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="199"
+		data-flex-basis="479px"
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Hugo Automatic Build and Publish</p>
+<p>In the <code>blog</code> repository&rsquo;s <code>.github/workflows</code> directory, create <code>deploy.yml</code> with the following configuration:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Execute action on git push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># Runs everyday at 8:00 AM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0 0 * * *&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;latest&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c"># Hugo build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c"># Push to specified repository after building</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">PERSONAL_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PERSONAL_TOKEN }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">EXTERNAL_REPOSITORY</span><span class="p">:</span><span class="w"> </span><span class="l">zoyao/zoyao.github.io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">PUBLISH_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">PUBLISH_DIR</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">commit_message</span><span class="p">:</span><span class="w"> </span><span class="l">${{ github.event.head_commit.message }}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">After</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">`</span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="o">`</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">executed</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">automated</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">triggered</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">relevant</span><span class="w"> </span><span class="n">workflow</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Actions</span><span class="w"> </span><span class="n">tab</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">`</span><span class="n">blog</span><span class="o">`</span><span class="w"> </span><span class="n">repository</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="w"> </span><span class="kt">text</span><span class="p">](</span><span class="n">image</span><span class="o">-</span><span class="mi">5</span><span class="p">.</span><span class="n">png</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">## Private Automated Deployment CI/CD
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">Using</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">Pages</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">very</span><span class="w"> </span><span class="n">convenient</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">automated</span><span class="w"> </span><span class="n">deployment</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">domains</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">slow</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">certain</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">environments</span><span class="p">.</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">requirement</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">deploy</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">own</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">-</span><span class="w"> </span><span class="n">Private</span><span class="w"> </span><span class="n">Deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Here</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">Nginx</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">deployment</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="n">Copy</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">built</span><span class="w"> </span><span class="n">static</span><span class="w"> </span><span class="n">blog</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">under</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">`/</span><span class="n">app</span><span class="o">/</span><span class="n">blog</span><span class="o">/`</span><span class="w"> </span><span class="n">directory</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">Nginx</span><span class="p">.</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">Nginx</span><span class="s1">&#39;s `./nginx/conf.d` directory, create a new configuration file, named here as `blog-8888.conf`:
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">        ```nginx
+</span></span></span><span class="line"><span class="cl"><span class="s1">        server {
+</span></span></span><span class="line"><span class="cl"><span class="s1">            # Listen on port 8888
+</span></span></span><span class="line"><span class="cl"><span class="s1">            listen 8888;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            # IP access is used here first, it will be changed to domain name later during HTTPS configuration
+</span></span></span><span class="line"><span class="cl"><span class="s1">            server_name Server_Public_IP;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            # server_name www.zoyao.top;
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">            # Specify the location of static resources
+</span></span></span><span class="line"><span class="cl"><span class="s1">            location / {
+</span></span></span><span class="line"><span class="cl"><span class="s1">                root   /app/blog;
+</span></span></span><span class="line"><span class="cl"><span class="s1">                index  index.html index.htm;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            }
+</span></span></span><span class="line"><span class="cl"><span class="s1">        }
+</span></span></span><span class="line"><span class="cl"><span class="s1">        
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>3. After updating the Nginx configuration, access `http://Server_Public_IP:8888/` to see the blog homepage.
+</code></pre>
+<ul>
+<li>
+<p>Automated Deployment</p>
+<p>To use automated deployment, you first need to configure SSH key login. It is recommended to create a new user first for proper permission isolation.</p>
+<ol>
+<li>
+<p>Use the <code>adduser</code> command to create a new user, named <code>git</code> here (customizable):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo adduser git
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="n">Directory</span><span class="w"> </span><span class="n">authorization</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">authorize</span><span class="w"> </span><span class="o">`/</span><span class="n">app</span><span class="o">/</span><span class="n">blog</span><span class="o">`</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">step</span><span class="p">.</span><span class="w"> </span><span class="n">Switch</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">`</span><span class="n">git</span><span class="o">`</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">execute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="o">```</span><span class="n">bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sudo</span><span class="w"> </span><span class="n">chmod</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="w"> </span><span class="mi">777</span><span class="w"> </span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>3. Switch to the `git` user, create an SSH key, and save it in GitHub secrets.
+
+    - Switch to the git user:
+
+        ```bash
+        su git
+        ```
+
+    - Create a new directory `.ssh` under the `/home/git` directory and authorize it:
+
+        ```bash
+        mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">Execute</span><span class="w"> </span><span class="o">`</span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span><span class="o">`</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">pair</span><span class="p">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">recommended</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="o">`</span><span class="n">ed25519</span><span class="o">`</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">secure</span><span class="w"> </span><span class="n">than</span><span class="w"> </span><span class="o">`</span><span class="n">rsa</span><span class="o">`</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="o">```</span><span class="n">bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">ed25519</span><span class="w"> </span><span class="o">-</span><span class="n">C</span><span class="w"> </span><span class="s2">&#34;github-actions-deploy-key&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">github_actions</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="o">```</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">Copy</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">`</span><span class="n">authorized_keys</span><span class="o">`</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="o">```</span><span class="n">bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">sh</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s1">&#39;cat ~/.ssh/github_actions.pub &gt;&gt; ~/.ssh/authorized_keys&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>    - Authorize `authorized_keys`:
+    
+        ```bash
+        chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - View and copy the contents of the private key for later use:
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">            ```bash
+</span></span><span class="line"><span class="cl">            cat ~/.ssh/github_actions
+</span></span><span class="line"><span class="cl">            
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>    - Use SSH locally to verify if the login is successful.
+
+    - Add the key configuration to the `blog` repository. The path is: `blog` repository / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret. Name it `SERVER_SSH_KEY`, and paste the private key copied in the previous step into the Secret and save it.
+
+        ![alt text](image-6.png)
+    
+4. Configure GitHub Automated Deployment
+
+    In the `blog` repository's `.github/workflows` directory, create `deploy.yml`. The configuration content is as follows. Change the Server IP to your own private server IP.
+
+    ```yaml
+    name: deploy
+
+        on:
+            push:
+            workflow_dispatch:
+            schedule:
+                # Runs everyday at 8:00 AM
+                - cron: &quot;0 0 * * *&quot;
+
+        jobs:
+            build:
+                runs-on: ubuntu-latest
+                steps:
+                    - name: Checkout
+                    uses: actions/checkout@v2
+                    with:
+                        submodules: true
+                        fetch-depth: 0
+
+                    - name: Setup Hugo
+                    uses: peaceiris/actions-hugo@v2
+                    with:
+                        hugo-version: &quot;latest&quot;
+
+                    - name: Build Web
+                    run: hugo
+
+                    - name: Deploy Web Self
+                    uses: easingthemes/ssh-deploy@main
+                    with:
+                        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+                        REMOTE_HOST: Server_IP
+                        REMOTE_USER: git
+                        SOURCE: ./public/
+                        TARGET: /app/blog/hugo/
+                        ARGS: -avz --delete --chown=git:git    
+    ```
+</code></pre>
+<h3 id="https-configuration">HTTPS Configuration
+</h3><p>Here we use Alibaba Cloud&rsquo;s free SSL certificate for HTTPS configuration. However, since the free certificate has a short validity period, we need to install <code>acme</code> for automatic renewal and updates.</p>
+<ol>
+<li>
+<p>Apply for Alibaba Cloud API</p>
+<ul>
+<li>
+<p>Create an acme access user</p>
+<p>After logging into the Alibaba Cloud backend, go to Resource Access Management (RAM). Select Identities / Users, create a new user, check <code>OpenAPI Access</code> (AccessKey), confirm, and save the corresponding key and secret for later use.</p>
+<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-7.png"
+	width="1332"
+	height="495"
+	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-7_hu_c51e7f34ac089fc6.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-7_hu_24b93917ad6ac2be.png 1024w"
+	loading="lazy"
+	
+		alt="alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="269"
+		data-flex-basis="645px"
+	
+></p>
+</li>
+<li>
+<p>Configure permissions</p>
+<p>Click Add Permissions and grant the new user the following permissions:</p>
+<p><code>AliyunRAMFullAccess</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Configure acme Automatic Updates</p>
+<ul>
+<li>
+<p>Install acme</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl <span class="o">[</span>https://get.acme.sh<span class="o">](</span>https://get.acme.sh<span class="o">)</span> <span class="p">|</span> sh -s <span class="nv">email</span><span class="o">=</span>xxxx@xxxx.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Use the key and secret saved in step 1 to configure Alibaba Cloud&rsquo;s system parameters:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">Ali_Key</span><span class="o">=</span><span class="s2">&#34;key&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">Ali_Secret</span><span class="o">=</span><span class="s2">&#34;Secret&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Issue the certificate:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">acme.sh --issue --dns dns_ali -d zoyao.top -d <span class="s1">&#39;*.zoyao.top&#39;</span> --dnssleep <span class="m">300</span> --debug
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">certificate</span><span class="o">.</span> <span class="n">Because</span> <span class="n">I</span> <span class="n">deployed</span> <span class="n">Nginx</span> <span class="n">using</span> <span class="n">Docker</span><span class="p">,</span> <span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">restart</span> <span class="n">Nginx</span> <span class="n">after</span> <span class="n">pulling</span> <span class="n">the</span> <span class="n">certificate</span><span class="p">,</span> <span class="n">so</span> <span class="n">I</span> <span class="n">added</span> <span class="err">`</span><span class="o">--</span><span class="n">reloadcmd</span> <span class="s2">&#34;docker restart nginx&#34;</span><span class="err">`</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">delete</span> <span class="ow">or</span> <span class="n">modify</span> <span class="n">it</span> <span class="n">to</span> <span class="n">your</span> <span class="n">own</span> <span class="n">command</span> <span class="n">based</span> <span class="n">on</span> <span class="n">actual</span> <span class="n">needs</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="err">```</span><span class="n">bash</span>
+</span></span><span class="line"><span class="cl">        <span class="n">acme</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">cert</span> <span class="o">-</span><span class="n">d</span> <span class="n">zoyao</span><span class="o">.</span><span class="n">top</span> <span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span>       <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pem</span>  <span class="o">--</span><span class="n">fullchain</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span> <span class="o">--</span><span class="n">reloadcmd</span>     <span class="s2">&#34;docker restart nginx&#34;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>- Once successfully executed, you can view the certificate in the `/app/nginx/ssl/zoyao.top/` directory.
+</code></pre>
+<ol start="3">
+<li>
+<p>Nginx SSL Configuration</p>
+<p>In Nginx&rsquo;s <code>./nginx/conf.d</code> directory, create a new configuration file, named here as <code>common.conf</code>.</p>
+<p>In the previous private deployment, we used port 8888 as the blog&rsquo;s access port. Here we only need to forward the SSL 443 port to the 8888 port and configure the SSL certificate address. The configuration file is as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="s">[::]:443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Configure blog domain name
+</span></span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">www.zoyao.top</span> <span class="s">zoyao.top</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># The SSL certificate address saved in the previous step. Because it&#39;s a Docker deployment, the mapped address is configured here
+</span></span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate</span> <span class="s">&#34;/app/ssl/zoyao.top/cert.pem&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">&#34;/app/ssl/zoyao.top/key.pem&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_cache</span> <span class="s">shared:SSL:1m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_timeout</span>  <span class="mi">10m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_ciphers</span> <span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Forward the request to the port where the blog is actually deployed
+</span></span></span><span class="line"><span class="cl">        <span class="kn">proxy_pass</span>  <span class="s">[http://127.0.0.1:8888](http://127.0.0.1:8888)</span><span class="p">;</span> <span class="c1"># Forwarding rule
+</span></span></span><span class="line"><span class="cl">        <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$proxy_host</span><span class="p">;</span> <span class="c1"># Modify forwarding request header so the app on port 8080 can receive the real request
+</span></span></span><span class="line"><span class="cl">        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>At this point, the HTTPS deployment is complete. Open <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
+    >https://www.zoyao.top</a> to access it.</p>
+</li>
+</ol>
+<h2 id="i18n-internationalization">i18n Internationalization
+</h2><p>Hugo provides a complete internationalization solution natively. You can define different language setups in <code>hugo.yaml</code>.</p>
+<p>Here, I have defined two languages: Chinese and English.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">languages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">en</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">languageName</span><span class="p">:</span><span class="w"> </span><span class="l">English</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">zoyao’s Travel Diary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">sidebar</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">Let&#39;s bust our asses and meet again at the pinnacle of success.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">zh-cn</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">languageName</span><span class="p">:</span><span class="w"> </span><span class="l">中文</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">zoyao的旅行日记</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">sidebar</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">顶峰相见</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Correspondingly, in the articles, you also need different Markdown files to distinguish between different languages.</p>
+<p>For example, for this article, <code>index.zh-cn.md</code> is used for Chinese.</p>
+<p>In the same directory, you can create <code>index.en.md</code> for English.</p>
+<p>You can configure the website&rsquo;s default language through <code>DefaultContentLanguage</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">DefaultContentLanguage</span><span class="p">:</span><span class="w"> </span><span class="l">zh-cn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">languageCode</span><span class="p">:</span><span class="w"> </span><span class="l">zh-cn</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>This website uses different default languages for different deployment methods. In <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
+    >zoyao.top</a>, it defaults to Chinese, while in <a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
+    >zoyao.github.io</a>, it defaults to English. You just need to define the corresponding configuration in the <code>config</code> folder under the root directory.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysite
+</span></span><span class="line"><span class="cl">├── config.toml
+</span></span><span class="line"><span class="cl">└── config
+</span></span><span class="line"><span class="cl">    ├── development
+</span></span><span class="line"><span class="cl">    │   └── config.toml
+</span></span><span class="line"><span class="cl">    └── production
+</span></span><span class="line"><span class="cl">        └── config.toml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Different configuration files use a different <code>DefaultContentLanguage</code>.</p>
+<p>Similarly, during automated deployment, you can specify different configuration files to complete the deployment for the corresponding language environment:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo --environment production</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><!-- Link Definition Area -->
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/github/">Github</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2017 - 
+        
+        2026 zoyao’s Travel Diary
+    </section>
+    
+    <section class="powerby">
+        
+            <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2025401657号</a> <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

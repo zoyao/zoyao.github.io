@@ -12,7 +12,7 @@
         <pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://zoyao.github.io/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/</guid>
-        <description>&lt;img src="https://zoyao.github.io/hugo-logo-wide.svg" alt="Featured image of post Hugo 博客 Github Page /私有化 部署指南" /&gt;&lt;p&gt;Hugo 是一个用 Go 编写的开源静态网站生成器，一般只需几秒钟就能生成一个网站，被称为“世界上最快的网站构建框架”。用户可以使用 markdown 语法编写博客内容，结合 Github Page 可以无需服务器部署自己的博客，同时也支持采用 Nginx 、Apache 等 HTTP 服务器的私有化部署方式。本文结合本博客的部署过程，详细叙述以上两种部署方式，以及 CI/CD 自动化部署、国际化配置等过程。&lt;/p&gt;
+        <description>&lt;img src="https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg" alt="Featured image of post Hugo 博客 Github Page /私有化 部署指南" /&gt;&lt;p&gt;Hugo 是一个用 Go 编写的开源静态网站生成器，一般只需几秒钟就能生成一个网站，被称为“世界上最快的网站构建框架”。用户可以使用 markdown 语法编写博客内容，结合 Github Page 可以无需服务器部署自己的博客，同时也支持采用 Nginx 、Apache 等 HTTP 服务器的私有化部署方式。本文结合本博客的部署过程，详细叙述以上两种部署方式，以及 CI/CD 自动化部署、国际化配置等过程。&lt;/p&gt;
 &lt;p&gt;英文站点 - Github Page 访问地址:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zoyao.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;zoyao.github.io&lt;/a&gt;&lt;/p&gt;
@@ -221,14 +221,18 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;创建完成，打开仓库的 Settings 配置，修改 Default branch 可以修改默认展示的分支。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-4.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-4.png&#34;
+	width=&#34;1291&#34;
+	height=&#34;603&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-4_hu_e3a3d788978c1f4d.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-4_hu_16eadab4c5bf3ce9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;当前配置为main分支&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;214&#34;
+		data-flex-basis=&#34;513px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;上传静态页面 index.html 文件至仓库指定分支&lt;/p&gt;
@@ -278,14 +282,18 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;打开 Github 全局配置（非仓库配置）Settings / Settings / Personal access tokens / Fine-grained tokens / Generate new token&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-1.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-1.png&#34;
+	width=&#34;1230&#34;
+	height=&#34;301&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-1_hu_77b36aaacfbc9059.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-1_hu_f9eb01c5a9b08520.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;408&#34;
+		data-flex-basis=&#34;980px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -297,27 +305,35 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Repository access 安全考虑建议选择 Only select repositories，只选择刚刚创建的 GitHub Pages 仓库仓库&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-3.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-3.png&#34;
+	width=&#34;562&#34;
+	height=&#34;365&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-3_hu_d37a8287b900342f.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-3_hu_d3e798ece66088be.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Permissions 权限配置将 Contents 修改为 Read and write&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-2.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-2.png&#34;
+	width=&#34;821&#34;
+	height=&#34;83&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-2_hu_b22f8d21b1bf99de.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-2_hu_b35312794909fa85.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;989&#34;
+		data-flex-basis=&#34;2373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -326,14 +342,18 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;在 blog 仓库增加 token 配置，路径为：blog 仓库 / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret，Name 命名为 PERSONAL_TOKEN，并将上述步骤复制的 token 粘贴到 Secret 中保存&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image.png&#34;
+	width=&#34;1579&#34;
+	height=&#34;791&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image_hu_15d4a547825b9e72.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image_hu_ff3df738f1c0f9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -425,14 +445,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;配置完成之后，当执行 git push 之后，即触发自动化部署，可在 blog 仓库的 action 中，看到相关流程&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-5.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-5.png&#34;
+	width=&#34;1557&#34;
+	height=&#34;503&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-5_hu_77bf29ecbd2438a7.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-5_hu_60d52b8a5088c42f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;309&#34;
+		data-flex-basis=&#34;742px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -589,14 +613,18 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;在 blog 仓库增加密钥配置，路径为：blog 仓库 / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret，Name 命名为 SERVER_SSH_KEY，并将上述步骤复制的私钥粘贴到 Secret 中保存&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-6.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-6.png&#34;
+	width=&#34;1579&#34;
+	height=&#34;791&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-6_hu_e47ef8d3261d7b3f.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-6_hu_8dadc26442f26031.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;479px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -696,14 +724,18 @@
 &lt;li&gt;
 &lt;p&gt;创建 acme 访问用户&lt;/p&gt;
 &lt;p&gt;登录阿里云后台后，进入 权限与安全 / 权限与安全， 选择 身份管理 / 用户，创建新用户，勾选 使用永久 AccessKey 访问，确认后保存对应的 key 以及 secret 备用&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/image-7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-7.png&#34;
+	width=&#34;1332&#34;
+	height=&#34;495&#34;
+	srcset=&#34;https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-7_hu_c51e7f34ac089fc6.png 480w, https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/image-7_hu_24b93917ad6ac2be.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;269&#34;
+		data-flex-basis=&#34;645px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
