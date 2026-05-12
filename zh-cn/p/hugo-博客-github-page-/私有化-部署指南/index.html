@@ -377,8 +377,8 @@
 <p><a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
     >zoyao.github.io</a></p>
 <p>中文站点 - Nginx 私有化部署访问地址:</p>
-<p><a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
-    >zoyao.top</a></p>
+<p><a class="link" href="https://zoyao.site/"  target="_blank" rel="noopener"
+    >zoyao.site</a></p>
 <h2 id="hugo-安装">Hugo 安装
 </h2><p>hugo 本地安装，建议首次使用时在本地安装好 hugo 客户端，方便调试。后续使用过程中，可脱离 hugo 客户端使用，在本地编辑好 markdown 文件上传至 github，即可触发自动化部署，详见 Github Pages 自动化部署与私有化自动化部署章节</p>
 <ul>
@@ -857,7 +857,7 @@
 </span></span><span class="line"><span class="cl">    listen 8888;
 </span></span><span class="line"><span class="cl">    # 这里先采用IP访问，后续 HTTPS 配置再修改为域名
 </span></span><span class="line"><span class="cl">    server_name 服务器公网IP;
-</span></span><span class="line"><span class="cl">    # server_name www.zoyao.top;
+</span></span><span class="line"><span class="cl">    # server_name www.zoyao.site;
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    # 指定静态资源位置
 </span></span><span class="line"><span class="cl">    location / {
@@ -1140,7 +1140,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">acme.sh --issue --dns dns_ali -d zoyao.top -d &#39;*.zoyao.top&#39; --dnssleep 300 --debug
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">acme.sh --issue --dns dns_ali -d zoyao.site -d &#39;*.zoyao.site&#39; --dnssleep 300 --debug
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1151,12 +1151,12 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">acme</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">cert</span> <span class="o">-</span><span class="n">d</span> <span class="n">zoyao</span><span class="o">.</span><span class="n">top</span> <span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span>       <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pem</span>  <span class="o">--</span><span class="n">fullchain</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span> <span class="o">--</span><span class="n">reloadcmd</span>     <span class="s2">&#34;docker restart nginx&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">acme</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">cert</span> <span class="o">-</span><span class="n">d</span> <span class="n">zoyao</span><span class="o">.</span><span class="n">site</span> <span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span>       <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">site</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pem</span>  <span class="o">--</span><span class="n">fullchain</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">site</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span> <span class="o">--</span><span class="n">reloadcmd</span>     <span class="s2">&#34;docker restart nginx&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
-<p>执行成功后，可在 /app/nginx/ssl/zoyao.top/ 目录下查看到证书</p>
+<p>执行成功后，可在 /app/nginx/ssl/zoyao.site/ 目录下查看到证书</p>
 </li>
 </ul>
 </li>
@@ -1197,11 +1197,11 @@
 </span></span><span class="line"><span class="cl">    listen [::]:443 ssl http2;
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    # 配置博客域名
-</span></span><span class="line"><span class="cl">    server_name www.zoyao.top zoyao.top;
+</span></span><span class="line"><span class="cl">    server_name www.zoyao.site zoyao.site;
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    # 上一个步骤保存的 ssl 证书地址，这里因为是 docker 部署，配置了映射后的地址
-</span></span><span class="line"><span class="cl">    ssl_certificate &#34;/app/ssl/zoyao.top/cert.pem&#34;;
-</span></span><span class="line"><span class="cl">    ssl_certificate_key &#34;/app/ssl/zoyao.top/key.pem&#34;;
+</span></span><span class="line"><span class="cl">    ssl_certificate &#34;/app/ssl/zoyao.site/cert.pem&#34;;
+</span></span><span class="line"><span class="cl">    ssl_certificate_key &#34;/app/ssl/zoyao.site/key.pem&#34;;
 </span></span><span class="line"><span class="cl">    ssl_session_cache shared:SSL:1m;
 </span></span><span class="line"><span class="cl">    ssl_session_timeout  10m;
 </span></span><span class="line"><span class="cl">    ssl_ciphers HIGH:!aNULL:!MD5;
@@ -1218,8 +1218,8 @@
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>至此，HTTPS 部署完成，打开 <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
-    >https://www.zoyao.top</a> 即可访问</p>
+</div><p>至此，HTTPS 部署完成，打开 <a class="link" href="https://zoyao.site/"  target="_blank" rel="noopener"
+    >https://www.zoyao.site</a> 即可访问</p>
 </li>
 </ol>
 <h2 id="i18n国际化">i18n国际化
@@ -1275,8 +1275,8 @@
 </span></span><span class="line"><span class="cl">languageCode: zh-cn
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>本网站针对不同的部署方式，采用了不同的默认语言，在 <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
-    >zoyao.top</a> 中默认中文，在 <a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
+</div><p>本网站针对不同的部署方式，采用了不同的默认语言，在 <a class="link" href="https://zoyao.site/"  target="_blank" rel="noopener"
+    >zoyao.site</a> 中默认中文，在 <a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
     >zoyao.github.io</a> 中默认英文，只需要在根目录下的 config 文件夹中定义好相应的配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

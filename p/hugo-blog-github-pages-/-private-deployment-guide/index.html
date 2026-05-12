@@ -375,8 +375,8 @@
 <p><a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
     >zoyao.github.io</a></p>
 <p>Chinese site - Nginx private deployment access URL:</p>
-<p><a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
-    >zoyao.top</a></p>
+<p><a class="link" href="https://zoyao.site/"  target="_blank" rel="noopener"
+    >zoyao.site</a></p>
 <h2 id="hugo-installation">Hugo Installation
 </h2><p>Local Hugo installation: It is recommended to install the Hugo client locally when using it for the first time to facilitate debugging. During subsequent use, you can operate without the local Hugo client; simply editing Markdown files locally and uploading them to GitHub will trigger automated deployment. For details, see the GitHub Pages Automated Deployment and Private Automated Deployment sections.</p>
 <ul>
@@ -938,7 +938,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="s1">            listen 8888;
 </span></span></span><span class="line"><span class="cl"><span class="s1">            # IP access is used here first, it will be changed to domain name later during HTTPS configuration
 </span></span></span><span class="line"><span class="cl"><span class="s1">            server_name Server_Public_IP;
-</span></span></span><span class="line"><span class="cl"><span class="s1">            # server_name www.zoyao.top;
+</span></span></span><span class="line"><span class="cl"><span class="s1">            # server_name www.zoyao.site;
 </span></span></span><span class="line"><span class="cl"><span class="s1">
 </span></span></span><span class="line"><span class="cl"><span class="s1">            # Specify the location of static resources
 </span></span></span><span class="line"><span class="cl"><span class="s1">            location / {
@@ -1168,7 +1168,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">acme.sh --issue --dns dns_ali -d zoyao.top -d <span class="s1">&#39;*.zoyao.top&#39;</span> --dnssleep <span class="m">300</span> --debug
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">acme.sh --issue --dns dns_ali -d zoyao.site -d <span class="s1">&#39;*.zoyao.site&#39;</span> --dnssleep <span class="m">300</span> --debug
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1189,11 +1189,11 @@
 </span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">certificate</span><span class="o">.</span> <span class="n">Because</span> <span class="n">I</span> <span class="n">deployed</span> <span class="n">Nginx</span> <span class="n">using</span> <span class="n">Docker</span><span class="p">,</span> <span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">restart</span> <span class="n">Nginx</span> <span class="n">after</span> <span class="n">pulling</span> <span class="n">the</span> <span class="n">certificate</span><span class="p">,</span> <span class="n">so</span> <span class="n">I</span> <span class="n">added</span> <span class="err">`</span><span class="o">--</span><span class="n">reloadcmd</span> <span class="s2">&#34;docker restart nginx&#34;</span><span class="err">`</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">delete</span> <span class="ow">or</span> <span class="n">modify</span> <span class="n">it</span> <span class="n">to</span> <span class="n">your</span> <span class="n">own</span> <span class="n">command</span> <span class="n">based</span> <span class="n">on</span> <span class="n">actual</span> <span class="n">needs</span><span class="o">.</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="err">```</span><span class="n">bash</span>
-</span></span><span class="line"><span class="cl">        <span class="n">acme</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">cert</span> <span class="o">-</span><span class="n">d</span> <span class="n">zoyao</span><span class="o">.</span><span class="n">top</span> <span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span>       <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pem</span>  <span class="o">--</span><span class="n">fullchain</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">top</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span> <span class="o">--</span><span class="n">reloadcmd</span>     <span class="s2">&#34;docker restart nginx&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">acme</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">cert</span> <span class="o">-</span><span class="n">d</span> <span class="n">zoyao</span><span class="o">.</span><span class="n">site</span> <span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span>       <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">site</span><span class="o">/</span><span class="n">key</span><span class="o">.</span><span class="n">pem</span>  <span class="o">--</span><span class="n">fullchain</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">zoyao</span><span class="o">.</span><span class="n">site</span><span class="o">/</span><span class="n">cert</span><span class="o">.</span><span class="n">pem</span> <span class="o">--</span><span class="n">reloadcmd</span>     <span class="s2">&#34;docker restart nginx&#34;</span>
 </span></span><span class="line"><span class="cl">        
 </span></span></code></pre></td></tr></table>
 </div>
-</div><pre><code>- Once successfully executed, you can view the certificate in the `/app/nginx/ssl/zoyao.top/` directory.
+</div><pre><code>- Once successfully executed, you can view the certificate in the `/app/nginx/ssl/zoyao.site/` directory.
 </code></pre>
 <ol start="3">
 <li>
@@ -1233,11 +1233,11 @@
 </span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="s">[::]:443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># Configure blog domain name
-</span></span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">www.zoyao.top</span> <span class="s">zoyao.top</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">www.zoyao.site</span> <span class="s">zoyao.site</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># The SSL certificate address saved in the previous step. Because it&#39;s a Docker deployment, the mapped address is configured here
-</span></span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate</span> <span class="s">&#34;/app/ssl/zoyao.top/cert.pem&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">&#34;/app/ssl/zoyao.top/key.pem&#34;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate</span> <span class="s">&#34;/app/ssl/zoyao.site/cert.pem&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">&#34;/app/ssl/zoyao.site/key.pem&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_cache</span> <span class="s">shared:SSL:1m</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_timeout</span>  <span class="mi">10m</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_ciphers</span> <span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
@@ -1254,8 +1254,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>At this point, the HTTPS deployment is complete. Open <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
-    >https://www.zoyao.top</a> to access it.</p>
+</div><p>At this point, the HTTPS deployment is complete. Open <a class="link" href="https://zoyao.site/"  target="_blank" rel="noopener"
+    >https://www.zoyao.site</a> to access it.</p>
 </li>
 </ol>
 <h2 id="i18n-internationalization">i18n Internationalization
@@ -1311,8 +1311,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="nt">languageCode</span><span class="p">:</span><span class="w"> </span><span class="l">zh-cn</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>This website uses different default languages for different deployment methods. In <a class="link" href="https://zoyao.top/"  target="_blank" rel="noopener"
-    >zoyao.top</a>, it defaults to Chinese, while in <a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
+</div><p>This website uses different default languages for different deployment methods. In <a class="link" href="https://zoyao.site/"  target="_blank" rel="noopener"
+    >zoyao.site</a>, it defaults to Chinese, while in <a class="link" href="https://zoyao.github.io/"  target="_blank" rel="noopener"
     >zoyao.github.io</a>, it defaults to English. You just need to define the corresponding configuration in the <code>config</code> folder under the root directory.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
