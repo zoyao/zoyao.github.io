@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hugo CI/CD 自动化部署、国际化配置。">
-<title>Hugo 博客 Github Page /私有化 部署指南</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Github Action 自动化部署、更新SSL证书并推送到目标服务器。">
+<title>Github Action 自动化更新SSL证书</title>
 
-<link rel='canonical' href='https://zoyao.github.io/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/'>
+<link rel='canonical' href='https://zoyao.github.io/zh-cn/p/github-action-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0ssl%E8%AF%81%E4%B9%A6/'>
 
-<link rel="stylesheet" href="/scss/style.min.cfa5b1b0e78d61c00a14173992a1f3fa3b5c1b9fa34d023de959af564e7b19dd.css"><meta property='og:title' content="Hugo 博客 Github Page /私有化 部署指南">
-<meta property='og:description' content="Hugo CI/CD 自动化部署、国际化配置。">
-<meta property='og:url' content='https://zoyao.github.io/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/'>
+<link rel="stylesheet" href="/scss/style.min.cfa5b1b0e78d61c00a14173992a1f3fa3b5c1b9fa34d023de959af564e7b19dd.css"><meta property='og:title' content="Github Action 自动化更新SSL证书">
+<meta property='og:description' content="Github Action 自动化部署、更新SSL证书并推送到目标服务器。">
+<meta property='og:url' content='https://zoyao.github.io/zh-cn/p/github-action-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0ssl%E8%AF%81%E4%B9%A6/'>
 <meta property='og:site_name' content='zoyao的旅行日记'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='hugo' /><meta property='article:tag' content='github' /><meta property='article:published_time' content='2025-06-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg' />
-<meta name="twitter:title" content="Hugo 博客 Github Page /私有化 部署指南">
-<meta name="twitter:description" content="Hugo CI/CD 自动化部署、国际化配置。"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ssl' /><meta property='article:tag' content='github' /><meta property='article:published_time' content='2026-05-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-05-12T00:00:00&#43;00:00'/><meta property='og:image' content='https://zoyao.github.io/ssl-logo.png' />
+<meta name="twitter:title" content="Github Action 自动化更新SSL证书">
+<meta name="twitter:description" content="Github Action 自动化部署、更新SSL证书并推送到目标服务器。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zoyao.github.io/ssl-logo.png' />
     </head>
     <body class="
     article-page
@@ -272,9 +272,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">
+            <a href="/zh-cn/p/github-action-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0ssl%E8%AF%81%E4%B9%A6/">
                 
-                    <img src="/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg" loading="lazy" alt="Featured image of post Hugo 博客 Github Page /私有化 部署指南" />
+                    <img src="/ssl-logo.png" loading="lazy" alt="Featured image of post Github Action 自动化更新SSL证书" />
                 
             </a>
         </div>
@@ -284,8 +284,8 @@
     
     <header class="article-category">
         
-            <a href="/zh-cn/categories/hugo/" >
-                Hugo
+            <a href="/zh-cn/categories/ssl/" >
+                Ssl
             </a>
         
             <a href="/zh-cn/categories/blog/" >
@@ -297,12 +297,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">Hugo 博客 Github Page /私有化 部署指南</a>
+            <a href="/zh-cn/p/github-action-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0ssl%E8%AF%81%E4%B9%A6/">Github Action 自动化更新SSL证书</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Hugo CI/CD 自动化部署、国际化配置。
+            Github Action 自动化部署、更新SSL证书并推送到目标服务器。
         </h3>
         
     </div>
@@ -323,7 +323,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jun 03, 2025</time>
+                <time class="article-time--published">May 12, 2026</time>
             </div>
         
 
@@ -345,25 +345,6 @@
     </footer>
     
 
-    
-        <footer class="article-translations">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-            <div>
-                
-                    <a href="https://zoyao.github.io/p/hugo-blog-github-pages-/-private-deployment-guide/" class="link">English</a>
-                
-            </div>
-        </footer>
     
 </div>
 
@@ -581,18 +562,14 @@
 </li>
 </ol>
 <p>创建完成，打开仓库的 Settings 配置，修改 Default branch 可以修改默认展示的分支。</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-4.png"
-	width="1291"
-	height="603"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-4_hu_e3a3d788978c1f4d.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-4_hu_16eadab4c5bf3ce9.png 1024w"
+<p><img src="/image-4.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="当前配置为main分支"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="214"
-		data-flex-basis="513px"
 	
 ></p>
 <p>上传静态页面 index.html 文件至仓库指定分支</p>
@@ -642,18 +619,14 @@
 <ul>
 <li>
 <p>打开 Github 全局配置（非仓库配置）Settings / Settings / Personal access tokens / Fine-grained tokens / Generate new token</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-1.png"
-	width="1230"
-	height="301"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-1_hu_77b36aaacfbc9059.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-1_hu_f9eb01c5a9b08520.png 1024w"
+<p><img src="/image-1.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="408"
-		data-flex-basis="980px"
 	
 ></p>
 </li>
@@ -665,35 +638,27 @@
 </li>
 <li>
 <p>Repository access 安全考虑建议选择 Only select repositories，只选择刚刚创建的 GitHub Pages 仓库仓库</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-3.png"
-	width="562"
-	height="365"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-3_hu_d37a8287b900342f.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-3_hu_d3e798ece66088be.png 1024w"
+<p><img src="/image-3.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="153"
-		data-flex-basis="369px"
 	
 ></p>
 </li>
 <li>
 <p>Permissions 权限配置将 Contents 修改为 Read and write</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-2.png"
-	width="821"
-	height="83"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-2_hu_b22f8d21b1bf99de.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-2_hu_b35312794909fa85.png 1024w"
+<p><img src="/image-2.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="989"
-		data-flex-basis="2373px"
 	
 ></p>
 </li>
@@ -702,18 +667,14 @@
 </li>
 <li>
 <p>在 blog 仓库增加 token 配置，路径为：blog 仓库 / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret，Name 命名为 PERSONAL_TOKEN，并将上述步骤复制的 token 粘贴到 Secret 中保存</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image.png"
-	width="1579"
-	height="791"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image_hu_15d4a547825b9e72.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image_hu_ff3df738f1c0f9.png 1024w"
+<p><img src="/image.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="199"
-		data-flex-basis="479px"
 	
 ></p>
 </li>
@@ -805,18 +766,14 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>配置完成之后，当执行 git push 之后，即触发自动化部署，可在 blog 仓库的 action 中，看到相关流程</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-5.png"
-	width="1557"
-	height="503"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-5_hu_77bf29ecbd2438a7.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-5_hu_60d52b8a5088c42f.png 1024w"
+<p><img src="/image-5.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="309"
-		data-flex-basis="742px"
 	
 ></p>
 </li>
@@ -973,18 +930,14 @@
 </li>
 <li>
 <p>在 blog 仓库增加密钥配置，路径为：blog 仓库 / Settings / Security / Secrets and variables / Actions / Repository secrets / New repository secret，Name 命名为 SERVER_SSH_KEY，并将上述步骤复制的私钥粘贴到 Secret 中保存</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-6.png"
-	width="1579"
-	height="791"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-6_hu_e47ef8d3261d7b3f.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-6_hu_8dadc26442f26031.png 1024w"
+<p><img src="/image-6.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="199"
-		data-flex-basis="479px"
 	
 ></p>
 </li>
@@ -1084,18 +1037,14 @@
 <li>
 <p>创建 acme 访问用户</p>
 <p>登录阿里云后台后，进入 权限与安全 / 权限与安全， 选择 身份管理 / 用户，创建新用户，勾选 使用永久 AccessKey 访问，确认后保存对应的 key 以及 secret 备用</p>
-<p><img src="/p/hugo-blog-github-pages-/-private-deployment-guide/image-7.png"
-	width="1332"
-	height="495"
-	srcset="/p/hugo-blog-github-pages-/-private-deployment-guide/image-7_hu_c51e7f34ac089fc6.png 480w, /p/hugo-blog-github-pages-/-private-deployment-guide/image-7_hu_24b93917ad6ac2be.png 1024w"
+<p><img src="/image-7.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="alt text"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="269"
-		data-flex-basis="645px"
 	
 ></p>
 </li>
@@ -1319,7 +1268,7 @@
     
     <section class="article-tags">
         
-            <a href="/zh-cn/tags/hugo/">Hugo</a>
+            <a href="/zh-cn/tags/ssl/">Ssl</a>
         
             <a href="/zh-cn/tags/github/">Github</a>
         
@@ -1355,18 +1304,18 @@
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/github-action-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0ssl%E8%AF%81%E4%B9%A6/">
+    <a href="/zh-cn/p/hugo-%E5%8D%9A%E5%AE%A2-github-page-/%E7%A7%81%E6%9C%89%E5%8C%96-%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">
         
         
             <div class="article-image">
                 
-                    <img src="/ssl-logo.png" loading="lazy" data-key="" data-hash="/ssl-logo.png"/>
+                    <img src="/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg" loading="lazy" data-key="" data-hash="/p/hugo-blog-github-pages-/-private-deployment-guide/hugo-logo-wide.svg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">Github Action 自动化更新SSL证书</h2>
+            <h2 class="article-title">Hugo 博客 Github Page /私有化 部署指南</h2>
         </div>
     </a>
 </article>
